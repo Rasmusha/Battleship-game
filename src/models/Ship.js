@@ -1,17 +1,23 @@
 class Ship {
-    constructor(length,timesHit = 0,sunk = false) {
+    constructor(length) {
         this.length = length;
-        this.timesHit = timesHit;
-        this.sunk = sunk;
+        this.coordinates = [];
+        this.hits = [];   
     }
 
-    hit() {
-        this.timesHit++;
+    hit(x,y) {
+        this.hits.push([x,y]);
     }
 
-    isSunk() {
-        return this.timesHit >= this.length;
+    isHitAt(x,y) {
+        return this.hits.some(([hx, hy]) => hx === x && hy === y);
     }
+
+   isSunk() {
+    return this.coordinates.every(([x, y]) =>
+        this.hits.some(([hx, hy]) => hx === x && hy === y)
+    );
+}
 }
 
 export default Ship;

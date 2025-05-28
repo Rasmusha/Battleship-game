@@ -13,7 +13,7 @@ class Player{
     }
 
     computerAttack(opponent) {
-        let x,y;
+        let x,y,key;
         do {
            x = Math.floor(Math.random() * 10);
            y = Math.floor(Math.random() * 10);

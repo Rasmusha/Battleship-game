@@ -11,6 +11,7 @@ class Gameboard{
     placeShip(x,y,length,direction){
         const ship = new Ship(length);
         const coordinates = [];
+        
 
         for(let i = 0; i < length; i++) {
           let currentX = x;
@@ -33,12 +34,23 @@ class Gameboard{
           coordinates.push([currentX,currentY]);
         }
 
+        ship.coordinates = coordinates;
+
         for(const[x,y] of coordinates) {
             this.board[x][y] = ship;
         }
 
         this.ships.push({ship, coordinates})
+    }
 
+    clearBoard() {
+        this.board = Array(10).fill(null).map(() => Array(10).fill(null));
+
+        this.ships = [];
+
+        this.missedAttacks = [];
+
+        this.attacksMade = [];
     }
 
     receiveAttack(x,y) {
@@ -54,10 +66,12 @@ class Gameboard{
 
         const target = this.board[x][y];
         if(target != null) {
-          target.hit();
+          target.hit(x,y);
+          console.log('hit');
           return "hit";
         } else {
           this.missedAttacks.push([x,y]);
+           console.log('miss');
           return "miss";
         }
         

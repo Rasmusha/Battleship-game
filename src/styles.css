@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 40px;
+    font-size: 5em;
+}
+
+h2 {
+    text-align: center;
+}
+
+#player-board, #computer-board {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    gap: 1px;
+    margin: 20px;
+}
+
+#boards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+#computer-board .cell:hover {
+  background-color: deepskyblue;
+}
+
+.cell.hit, .cell.miss {
+  cursor: default;
+}
+
+#restart {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.hidden {
+  display: none;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #333;
+   background-color: lightblue;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.hit {
+    background-color: red;
+}
+
+.cell.ship {
+  background-color: #444;
+}
+
+.cell.miss {
+  background-color: white;
+}

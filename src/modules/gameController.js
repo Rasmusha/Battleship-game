@@ -9,22 +9,18 @@ const gameController = (() => {
         player = new Player('Human');
         computer = new Player('Computer')
         currentPlayer = player;
-        
-        player.gameBoard.placeShip(1, 1, 5, "horizontal");
-        player.gameBoard.placeShip(2, 1, 4, "horizontal");
-        player.gameBoard.placeShip(3, 1, 3, "horizontal");
-        player.gameBoard.placeShip(4, 1, 3, "horizontal");
-        player.gameBoard.placeShip(5, 1, 2, "horizontal");
+    }
 
-        computer.gameBoard.placeShip(1, 1, 5, "horizontal");
-        computer.gameBoard.placeShip(2, 1, 4, "horizontal");
-        computer.gameBoard.placeShip(3, 1, 3, "horizontal");
-        computer.gameBoard.placeShip(4, 1, 3, "horizontal");
-        computer.gameBoard.placeShip(5, 1, 2, "horizontal");
+     function getPlayer() {
+        return player;
+    }
+
+     function getComputer() {
+        return computer;
     }
 
     function playerAttack(x,y) {
-        player.playerAttack(x,y,computer)
+        player.attack(x,y,computer)
         if(computer.gameBoard.allShipsSunk()) {
             return 'win';
         }
@@ -49,6 +45,9 @@ const gameController = (() => {
     startGame,
     playerAttack,
     computerAttack,
-    switchTurns
+    switchTurns,
+    getPlayer,
+    getComputer
 };
-})
+})(); 
+export default gameController;
